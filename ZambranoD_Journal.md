@@ -197,6 +197,9 @@ Luego se procedió a realizar ciertas actividades en Python, para familiarizarse
 
 Para la clase se realizó un estudio de la herramienta Make, esta herramienta permite automatizar ciertas tareas. Para esto se debe tener claro el patrón en el cual las tareas deben ejecutarse. Se realizó un ejercicio de ejecución de scripts con Make.
 
+Durante la clase también se propuso como tema para el proyecto final la resolución ecuaciones de Maxwell del electromagnetismo para diferentes sistemas.
+
+
 *************
 *************
 
@@ -236,4 +239,73 @@ Y dio las siguientes gráficas:
 *************
 *************
 
+#12/06/2015
+##Laboratorio Métodos Computacionales
+Se continuo el Experimento 1 de la clase.
+
+##Métodos computacionales
+El trabajo para esta clase consistía en aprender acerca del error e incertidumbre en los cálculos numéricos realizados por el computador. Al leer el [libro  de Landau](http://www.compadre.org/psrc/items/detail.cfm?ID=11578), se encuentran principalmente cuatro tipos de errores, Blunders, random errors, approximation errors y Round-off errors.
+Blunders se refiere a la mala lectura o introducción de datos en el software de programación, también con errores teóricos o matemáticos formulados por el programador, como por ejemplo escribir mal una ecuación o cosas similares.
+Los Random errors son aquellos que se producen por daños en el hardware, estos errores no son tan usuales, ya que las tecnologías de protecciones electrónicas están muy desarrolladas.
+El uso excesivo de aproximaciones puede causar errores ya que se pierde algo de información y se aumenta el grado de inertidumbre en el resultado, este problema se denomina approximation error.
+Finalmente el Round-off error se relaciona directamente con la cantidad de cifras decimales que se pueden almacenar, ya que se puede saturar la memoria al realizar los calculo.
+
+*************
+*************
+
+#16/06/2015
+##Métodos Computacionales
+Se realizó un ejercicio de interpolación utilizando conceptos de electromagnetismo. A partir de una tabla de datos se debia realizar un ajuste. La ecuación que del campo magnético a usar es:$|B|=\frac{\mu_{0}}{4\pi} \left( \frac{3r(m\cdot r)}{r^5} - \frac{m}{r^3} \right) \approx \frac{\mu_{0}}{2\pi} \left( \frac{m}{r^3} \right)$.
+
+
+| x/cm        | B/uT           |
+| ------------- |:-------------:|
+|2.3|34745|
+|2.8|19689|
+|3.2|12594|
+|3.7|7982|
+|4.3|5822|
+
+```
+#Se llaman a las librerias
+import numpy as np
+import matplotlib
+import matplotlib.pyplot as plt
+#Se declaran los arrays con la información
+x = np.array([2.3, 2.8, 3.2, 3.7, 4.3])
+B = np.array([34745, 19689, 12594, 7982, 5822])
+#Se define la función con la cual se hara el ajuste, que tiene como parametros el momento dipolar y la distancia
+def relacion(d,m)
+	return m/d**3
+#Se hace el ajuste
+fitpars, covmat = curve_fit(relacion, x, b)
+#Se crea a tabla con los 100 nuevos datos
+nuevosDatosX = np.linspace(2.3, 4.3, 100)
+nuevosDatosB = relacion(nuevoDatosX, fitpars)
+for i in range (len(nuevoDatosB)):
+	print "|%f|%f|"%(nuevosDatosX, nuevosDatosB)
+#Se hace la gráfica
+plt.scatter(x,B)
+plt.plot(nuevosDatosX, nuevosDatosB)
+plt.tittle("Campo magnetico vs Distancia del dipolo")
+plt.show()
+#Se imprime el valor del momento magnetico
+print (fitpars*10**(-6)/(2*pi*10**(-7)))
+```
+
+El tema que tenía para el proyecto final no era adecuado, así que se debe replantear todo desde cero.
+#17/06/2015
+##Laboratorio de Métodos Computacionales
+En el laboratorio se realizaron ejercicios de interpolación.
+
+##Métodos computacionales
+En la clase se explicó que es interpolación y que es extrapolación, aunque se enfoco la clase en la interpolación y en como hacer integrales numéricas con diversos comandos de la libreria scipy, tambien se volvió un poco al tema de Git y se vieron nuevas funciones para GitHub.
+Luego se realizaron ejercicios en Python para familizarse con métodos numéricos para funciones periódicas.
+
+#19/06/2015
+##Laboratorio de métodos computacionales
+Se realizó un taller enfocado en el Fenómeno de Gibbs.
+
+##Métodos computacionales
+Se estudio la transformada de Fourier para el tratamiento de archivos, se explico como funcionaba el muestreo usando métodos computacionales y se realizaron diversos ejercicios en los cuales se debia usar Fourier para realizar el tratamiento de imágenes.
 
