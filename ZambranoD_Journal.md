@@ -234,7 +234,7 @@ show()
 
 Y dio las siguientes gráficas:
 
-![alt text](https://raw.githubusercontent.com/Axpero/MC/master/Lissajous.png "Lissajous")
+![alt text](https://raw.githubusercontent.com/Axpero/MC/master/Im%C3%A1genes/Lissajous.png "Lissajous")
 
 *************
 *************
