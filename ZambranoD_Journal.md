@@ -206,6 +206,8 @@ Durante la clase también se propuso como tema para el proyecto final la resoluc
 #10/06/2015
 ##Laboratorio Métodos Computacionales
 Se empezó el Experimento1 de la clase.
+
+---------------------------------
  
 ##Métodos computacionales
 
@@ -242,6 +244,8 @@ Y dio las siguientes gráficas:
 #12/06/2015
 ##Laboratorio Métodos Computacionales
 Se continuo el Experimento 1 de la clase.
+
+---------------------------------
 
 ##Métodos computacionales
 El trabajo para esta clase consistía en aprender acerca del error e incertidumbre en los cálculos numéricos realizados por el computador. Al leer el [libro  de Landau](http://www.compadre.org/psrc/items/detail.cfm?ID=11578), se encuentran principalmente cuatro tipos de errores, Blunders, random errors, approximation errors y Round-off errors.
@@ -294,18 +298,95 @@ print (fitpars*10**(-6)/(2*pi*10**(-7)))
 ```
 
 El tema que tenía para el proyecto final no era adecuado, así que se debe replantear todo desde cero.
+
+*************
+*************
+
 #17/06/2015
 ##Laboratorio de Métodos Computacionales
 En el laboratorio se realizaron ejercicios de interpolación.
 
+---------------------------------
+
 ##Métodos computacionales
 En la clase se explicó que es interpolación y que es extrapolación, aunque se enfoco la clase en la interpolación y en como hacer integrales numéricas con diversos comandos de la libreria scipy, tambien se volvió un poco al tema de Git y se vieron nuevas funciones para GitHub.
-Luego se realizaron ejercicios en Python para familizarse con métodos numéricos para funciones periódicas.
+Luego se realizaron ejercicios en Python para familizarse con métodos numéricos para funciones periódicas. Esto se hizo con la función del seno cardinal.
+
+```
+%pylab inline
+from scipy import signal
+t = linspace(0,2,2000)
+sqwave = sign((sin(2*pi*t))*pi/4)
+plot(t, sqwave)
+ylim(-2, 2)
+xlim(0,2)
+y = 0
+for n in range(0,5):
+    y1 = sin(2*pi*t*(2*n + 1))/(2*n + 1)
+    y = y + y1
+    plot(t,y)
+```
+
+Esto muestra las diferentes aproximaciones numéricas al seno cardinal para aproximacioes de 0 a 5 iteraciones.
+C
+![alt text](https://raw.githubusercontent.com/Axpero/MC/master/Im%C3%A1genes/SinC.png "SinC")
+
+Luego saque una aproximación iteranco 10000 veces.
+
+```
+t = linspace(0,2,2000)
+sqwave = sign((sin(2*pi*t))*pi/4)
+plot(t, sqwave)
+ylim(-2, 2)
+xlim(0,2)
+y = 0
+for n in range(0,10000):
+    y1 = sin(2*pi*t*(2*n + 1))/(2*n + 1)
+    y = y + y1
+plot(t,y)
+```
+
+![alt text](https://raw.githubusercontent.com/Axpero/MC/master/Im%C3%A1genes/SinC10000.png "SinC10000")
+
+*************
+*************
 
 #19/06/2015
 ##Laboratorio de métodos computacionales
 Se realizó un taller enfocado en el Fenómeno de Gibbs.
 
+--------------------------------
+
 ##Métodos computacionales
 Se estudio la transformada de Fourier para el tratamiento de archivos, se explico como funcionaba el muestreo usando métodos computacionales y se realizaron diversos ejercicios en los cuales se debia usar Fourier para realizar el tratamiento de imágenes.
+
+```
+from scipy import misc
+from scipy.fftpack import *
+
+#Negativo
+negativo = zeros((512,512))
+for i in range(512):
+    for j in range(512):
+        negativo[i][j] = 255 - lena[i][j]
+#Decidí dejar la imagen a color
+imshow(negativo)
+
+#Vertical
+voltear = zeros((512,512))
+lena = misc.lena()
+for i in range(512):
+    for j in range(512):
+        voltear[i][j] = lena[511-i][511-j]
+imshow(voltear)
+
+#Horizontal
+lena = misc.lena()
+horizontal = zeros((512,512))
+for i in range(512):
+    for j in range(512):
+        horizontal[i][j] = lena[i][511-j]
+imshow(horizontal)
+
+```
 
