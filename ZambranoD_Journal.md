@@ -387,6 +387,11 @@ for i in range(512):
     for j in range(512):
         horizontal[i][j] = lena[i][511-j]
 imshow(horizontal)
-
 ```
+
+![alt text](https://raw.githubusercontent.com/Axpero/MC/master/Im%C3%A1genes/Negativo.png "Negativo")
+
+![alt text](https://raw.githubusercontent.com/Axpero/MC/master/Im%C3%A1genes/Vertical.png "Vertical")
+
+![alt text](https://raw.githubusercontent.com/Axpero/MC/master/Im%C3%A1genes/Horizontal.png "Horizontal")
 
