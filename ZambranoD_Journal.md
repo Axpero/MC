@@ -358,7 +358,7 @@ Se realizó un taller enfocado en el Fenómeno de Gibbs.
 --------------------------------
 
 ##Métodos computacionales
-Se estudio la transformada de Fourier para el tratamiento de archivos, se explico como funcionaba el muestreo usando métodos computacionales y se realizaron diversos ejercicios en los cuales se debia usar Fourier para realizar el tratamiento de imágenes.
+Se estudio la transformada de Fourier para el tratamiento de archivos, se explico como funcionaba el muestreo usando métodos computacionales y se realizaron diversos ejercicios en los cuales se debia usar Fourier el estudio de una onda triangular y tambien se realizaron ejericios para cambiar una imagen a partir de los arrays de bits que conforman la imagen.
 
 ```
 from scipy import misc
@@ -394,4 +394,87 @@ imshow(horizontal)
 ![alt text](https://raw.githubusercontent.com/Axpero/MC/master/Im%C3%A1genes/Vertical.png "Vertical")
 
 ![alt text](https://raw.githubusercontent.com/Axpero/MC/master/Im%C3%A1genes/Horizontal.png "Horizontal")
+
+*************
+*************
+
+#23/06/2015
+##Métodos computacionales
+
+Se realizó un ejercicio acerca de Fourier y filtrado de información, tambien se explicaron cosas de diferención numérica.
+
+```
+%pylab inline
+import numpy
+from scipy.fftpack import fft, ifft
+#Se importa el archivo y se realiza la primer imagen
+#Se edita el archivo en gedit para poder hacer el análisis de los datos desde 1900
+data = genfromtxt("monthrg1.dat")
+x = data[:,0]
+y = data[:,1]
+z = data[:,2]
+w = data[:,3]
+v = data[:,4]
+plot(x,w,alpha=0.5)
+grid(True)
+ylim(0,200)
+ylabel("manchas solares/mes")
+xlabel(u"t/año")
+#Se crea el parametro de la serie de Fourier, que en este caso es el tiempo
+t = len(w)
+dt = (x[-1] - x[0])/t
+#Se realiza la transformada de los datos
+transformada = fft(w)
+#Calculo de la frecuencia
+frecuencia = fftfreq(t,dt)
+#Se grafica la transformada con el parametro de la frecuencia
+xlabel('')
+plot(frecuencia, absolute(transformada))
+#Luego se filtra la información con un simple parametro
+filtrado = 0
+transformada[np.abs(frecuencia) > 0.19] = 0
+#Se transforman las frecuancias filtradas a tiempo
+filtrado = ifft(transformada)
+#Se grafica la primer imagen y la del filtro
+plot(x,w,alpha=0.5)
+plot(x,filtrado, linestyle = '--', color = 'red')
+grid(True)
+ylim(0,200)
+ylabel("manchas solares/mes")
+xlabel(u"t/año")
+```
+
+![alt text](https://raw.githubusercontent.com/Axpero/MC/master/Im%C3%A1genes/manchas1.png "Gráfica")
+![alt text](https://raw.githubusercontent.com/Axpero/MC/master/Im%C3%A1genes/manchas2.png "Gráfica")
+![alt text](https://raw.githubusercontent.com/Axpero/MC/master/Im%C3%A1genes/manchas3.png "Gráfica")
+
+*************
+*************
+
+#24/06/2015
+##Laboratorio de métodos computacionales
+Se inició el taller de diferenciacion.
+
+--------------------------------
+
+#24/06/2015
+##Métodos computacionales
+
+Se estudio el metodo de la regla de Simpson 3/8, para realizar integrales numéricas
+
+*************
+*************
+
+#26/06/2015
+##Laboratorio de métodos computacionales
+Se continuó el taller de diferenciacion.
+
+--------------------------------
+
+#24/06/2015
+##Métodos computacionales
+
+Se estudió el método de Runge Kutta para de desarrollo de integrales numéricas
+
+
 
