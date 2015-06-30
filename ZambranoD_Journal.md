@@ -457,7 +457,6 @@ Se inició el taller de diferenciacion.
 
 --------------------------------
 
-#24/06/2015
 ##Métodos computacionales
 
 Se estudio el metodo de la regla de Simpson 3/8, para realizar integrales numéricas
@@ -471,7 +470,6 @@ Se continuó el taller de diferenciacion.
 
 --------------------------------
 
-#24/06/2015
 ##Métodos computacionales
 
 Se estudió el método de Runge Kutta para de desarrollo de integrales numéricas
